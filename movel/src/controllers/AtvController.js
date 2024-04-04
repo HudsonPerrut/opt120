@@ -13,6 +13,16 @@ class AtvController {
             console.log(error)
         })
     }
+
+
+    listarAtividade(request, response){
+        database.select("*").table("atividade").then(atividades=>{
+            console.log(atividades)
+            response.json(atividades)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
 }
 
 module.exports = new AtvController()
