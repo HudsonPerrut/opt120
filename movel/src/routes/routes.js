@@ -6,12 +6,15 @@ const UserController = require('../controllers/UserController')
 const UserAtvController = require('../controllers/UserAtvController')
 
 router.post('/novaAtv', AtvController.novaAtividade)
-router.get('/atividades', AtvController.listarAtividade)
+router.get('/atividades', AtvController.listarAtividades)
+router.get('/atividade/:id', AtvController.listarAtividade)
 
 router.post('/novoUser', UserController.novoUsuario)
-router.get('/usuarios', UserController.listarUsuario)
+router.get('/usuarios', UserController.listarUsuarios)
+router.get('/usuario/:id', UserController.listarUsuario)
 
 router.post('/novaEntrega', UserAtvController.novaEntrega)
 router.get('/entregas', UserAtvController.listarEntregas)
+router.get('/entrega/:usuario_id/:atividade_id', UserAtvController.listarEntrega)
 
 module.exports = router

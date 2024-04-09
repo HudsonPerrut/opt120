@@ -15,9 +15,19 @@ class AtvController {
     }
 
 
-    listarAtividade(request, response){
+    listarAtividades(request, response){
         database.select("*").table("atividade").then(atividades=>{
             console.log(atividades)
+            response.json(atividades)
+        }).catch(error=>{
+            console.log(error)
+        })
+    } 
+    
+    listarAtividade(request, response){
+        const id = request.params.id
+
+        database.select("*").table("atividade").where({id:id}).then(atividades=>{
             response.json(atividades)
         }).catch(error=>{
             console.log(error)

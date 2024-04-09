@@ -14,9 +14,19 @@ class UserController {
         })
     }
 
-    listarUsuario(request, response){
+    listarUsuarios(request, response){
         database.select("*").table("usuario").then(usuarios=>{
             console.log(usuarios)
+            response.json(usuarios)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+
+    listarUsuario(request, response){
+        const id = request.params.id
+
+        database.select("*").table("usuario").where({id:id}).then(usuarios=>{
             response.json(usuarios)
         }).catch(error=>{
             console.log(error)
